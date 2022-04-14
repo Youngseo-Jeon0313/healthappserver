@@ -1,8 +1,8 @@
 const http = require('http');
-
+const mongoose = require('mongoose');
 const express = require('express');
-const mongoConnect = require('./util/database')
 const app = express();
+
 
 // app.use('/add-product',(req,res,next)=> {
 //     console.log("In the middleware!");
@@ -14,7 +14,14 @@ const app = express();
 //     res.send("<h1>Hello from Express!</h1>")
 // })
 
-mongoConnect(client => {
-    console.log(client);
+mongoose
+  .connect(
+    "mongodb+srv://jeonyoungseo:GlOcKBoCrBpp4WU3@cluster0.uco5y.mongodb.net/healthappserver?retryWrites=true&w=majority"
+  )
+  .then((result) => {
     app.listen(3000);
-})
+    console.log('start server!')
+  })
+  .catch((err) => {
+    console.log(err);
+  });
