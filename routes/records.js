@@ -3,4 +3,6 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const DiaryController = require('../controllers/records');
-router.get('/diaries', DiaryController.postAddDiary)
+router.get('/diary/add-diary', DiaryController.postAddDiary);
+router.get('/diary/add-diary', DiaryController.getAddDiary);
+router.get('/diary/edit-diary/:diaryId',getEditDiary);
