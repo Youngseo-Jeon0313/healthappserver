@@ -16,10 +16,10 @@ exports.postAddDiary = (req,res,next) => {
     
 }
 
-exports.getAddDiary = (req,res,next)=>{
+// exports.getAddDiary = (req,res,next)=>{
     
-}
+// }
 
-exports.getEditDiary = (req,res,next)=> {
+// exports.getEditDiary = (req,res,next)=> {
     
-}
+// }

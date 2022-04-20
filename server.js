@@ -7,15 +7,8 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const User = require('./models/user')
-// app.use('/add-product',(req,res,next)=> {
-//     console.log("In the middleware!");
-//     res.send('<h1>The "Add Product" Page</h1>')
-// })
-
-// app.use('/',(req,res,next)=> {
-//     console.log('In another middleware!');
-//     res.send("<h1>Hello from Express!</h1>")
-// })
+const recordsRoutes = require('./routes/records');
+const adminRoutes = require('./routes/admin')
 
 // app.use((req,res,next) => {
 //   User.findById("1234aa")
@@ -25,16 +18,16 @@ const User = require('./models/user')
 //     })
 //     .catch((err) => console.log(err));
 // })
-app.post('/diary',(req,res,next)=> {
-  console.log("Here in Diary!!");
-  res.send("<h1>Here in the Diary !!</h1>")
-  next()
-})
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(recordsRoutes);
+
+//app.use(errorController.get404)
 
 app.use(cors({origin:true, credential:true}));
 const port = 8080; //process.env.port || 5000
 
-app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
 
 mongoose
   .connect(
@@ -50,3 +43,4 @@ mongoose
 
 
  
+app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
