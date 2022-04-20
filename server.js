@@ -5,7 +5,7 @@ const http = require('http');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-
+const cors = require("cors");
 const User = require('./models/user')
 // app.use('/add-product',(req,res,next)=> {
 //     console.log("In the middleware!");
@@ -17,22 +17,28 @@ const User = require('./models/user')
 //     res.send("<h1>Hello from Express!</h1>")
 // })
 
-app.use((req,res,next) => {
-  User.findById("1234aa")
-    .then((user) => {
-      req.user = user;
-      next();
-    })
-    .catch((err) => console.log(err));
+// app.use((req,res,next) => {
+//   User.findById("1234aa")
+//     .then((user) => {
+//       req.user = user;
+//       next();
+//     })
+//     .catch((err) => console.log(err));
+// })
+app.post('/diary',(req,res,next)=> {
+  console.log("Here in Diary!!");
+  res.send("<h1>Here in the Diary !!</h1>")
+  next()
 })
 
- const port = 4000; //process.env.port || 4000
+app.use(cors({origin:true, credential:true}));
+const port = 8080; //process.env.port || 5000
 
+app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
 
 mongoose
   .connect(
     "mongodb+srv://jeonyoungseo:GlOcKBoCrBpp4WU3@cluster0.uco5y.mongodb.net/healthappserver?retryWrites=true&w=majority",
-    port
     )
   .then((result) => {
     app.listen(port);
