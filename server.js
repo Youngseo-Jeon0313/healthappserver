@@ -2,6 +2,7 @@
 
 const path = require('path');
 const http = require('http');
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
@@ -20,7 +21,7 @@ const adminRoutes = require('./routes/admin')
 // })
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(recordsRoutes);
 
 //app.use(errorController.get404)

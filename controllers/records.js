@@ -7,14 +7,12 @@ exports.postAddDiary = (req,res,next) => {
         date:date,
         description:description,
     });
-    diary
-      .save()
-      .then((result) => {
-        console.log("created diary");
-      })
-      .catch((err) => console.log(err));
-    
-}
+    diary.save()
+    .then(diary => {
+      console.log(diary)
+    })
+    .catch(err => console.log(err));
+};
 
 // exports.getAddDiary = (req,res,next)=>{
     
