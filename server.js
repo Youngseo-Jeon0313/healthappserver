@@ -25,7 +25,7 @@ const upload = multer({
 }) 
 //이러면 자동으로 upload라는 파일이 생성되고 그 안에 이미지파일 또는 파일 이름이 저장되게 된다.
 const cookieParser= require('cookie-parser');
-server.use(cookieParser('23u342t049(323958@%'))
+server.use(cookieParser('23u342t049(323958@%'));
 
 
 // app.use((req,res,next) => {
@@ -38,8 +38,11 @@ server.use(cookieParser('23u342t049(323958@%'))
 // })
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.static(path.join(__dirname, 'public'))); //public이라는 경로에서 정적 파일들을 불러온다.
-server.use(bodyParser.urlencoded({extended:true})) //확장할 수 있도록 허락
-server.use(bodyParser.json()) //그 확장한 자료를 json으로 변환해줌
+
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({extended:true})); //확장할 수 있도록 허락
+server.use(express.json());
+ //그 확장한 자료를 json으로 변환해줌
 server.use(recordsRoutes);
 //app.use(errorController.get404)
 
@@ -50,7 +53,7 @@ mongoose
     )
   .then((result) => {
     server.listen(port);
-    console.log('start server!')
+    console.log('start server!');
   })
   .catch((err) => {
     console.log(err);
@@ -58,4 +61,4 @@ mongoose
 
 
  
-server.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
+server.get('/', (req, res) => res.send('Hello World! 안녕하세요'));
